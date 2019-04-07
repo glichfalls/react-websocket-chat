@@ -1,0 +1,74 @@
+.chat {
+  position: relative;
+  width: 800px;
+  height: 800px;
+  margin: auto;
+  display: flex;
+  flex-flow: column;
+  top: 100px;
+}
+
+.input {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  input {
+    width: 100%;
+    border: 1px solid #0096ff;
+    padding: 5px 10px;
+  }
+}
+
+.chatContainer {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 500px;
+}
+
+.messages {
+  display: flex;
+  flex-flow: column;
+  padding: 5px 0;
+  width: 100%;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  min-height: 100%;
+  align-items: flex-start;
+  background: url('./../images/pattern-cubic-blue.jpg');
+}
+
+.message {
+  position: relative;
+  display: inline-flex;
+  flex-flow: column;
+  height: auto;
+  padding: 10px;
+  margin: 5px;
+  word-break: break-all;
+  max-width: 45%;
+  box-shadow: 0 1px 5px 0 #333333;
+  border-radius: 5px;
+  color: #333333;
+
+  .sender {
+    width: 100%;
+    font-size: 0.75rem;
+    font-weight: bold;
+  }
+  .body{
+    margin-top: 2px;
+    width: 100%
+  }
+  &.client {
+    background-color: #34dd80;
+    align-self: flex-end;
+  }
+  &.server {
+    background-color: #ffffff;
+  }
+  &.system {
+    align-self: center;
+    background-color: #80c2ff;
+    font-style: italic;
+  }
+}
