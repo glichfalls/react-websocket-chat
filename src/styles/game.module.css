@@ -1,0 +1,10 @@
+.locations {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap; }
+
+.location {
+  width: 50%;
+  padding: 5px; }
+
+/*# sourceMappingURL=game.module.css.map */

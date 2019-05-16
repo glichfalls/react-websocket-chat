@@ -1,8 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Maiden+Orange|Roboto:400,400i,500,700');
+
 body {
   margin: 0;
   font-family: Roboto, sans-serif;
   min-height: 100vh;
   height: 100vh;
+  background-color: #ececec;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Maiden Orange', cursive;
+}
+
+input, button {
+  font-family: 'Maiden Orange', cursive;
+  font-size: 1.25rem;
+  letter-spacing: 1px;
 }
 
 * {

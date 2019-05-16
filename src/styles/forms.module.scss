@@ -1,0 +1,37 @@
+
+.form {
+  width: 400px;
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+  padding: 10px;
+}
+
+.input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #0070c4;
+  margin-bottom: 5px;
+}
+
+.button {
+  flex-grow: 1;
+  background-color: #0070c4;
+  color: white;
+  border: 1px solid #0096ff;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin: 5px 10px;
+  cursor: pointer;
+
+  &.danger {
+    background-color: #da2f01;
+    border-color: #ff3001;
+  }
+}
+
+.buttonGroup {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}

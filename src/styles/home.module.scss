@@ -1,29 +1,11 @@
 
 .join {
   position: relative;
-  width: 250px;
+  width: 350px;
   height: 100vh;
   margin: auto auto;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
-
-  input {
-    width: 100%;
-    border-radius: 5px;
-    padding: 10px 15px;
-    border: 1px solid #30d47f;
-  }
-  a {
-    display: inline-block;
-    text-align: center;
-    padding: 10px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    margin: 5px 0;
-    width: 100%;
-    background-color: #30d47f;
-    color: #ffffff;
-  }
 }

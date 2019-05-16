@@ -43,24 +43,20 @@ class Chat extends Component {
 
     connect() {
 
-        this.connection = new WebSocket('wss://spyfall.portner.dev:8888');
+        this.connection = new WebSocket('ws://127.0.0.1:1337');
 
         this.connection.onopen = () => {
             this.setState({
                 history: this.state.history.concat([{
                     from: 'system',
-                    message: 'connection opened'
+                    message: 'connected'
                 }]),
                 isConnected: true
             });
         };
 
         this.connection.onmessage = (event) => {
-
-            console.log(event);
-
             let data = JSON.parse(event.data);
-
             this.setState({
                 history: this.state.history.concat([{
                     from: 'server',
@@ -74,7 +70,7 @@ class Chat extends Component {
             this.setState({
                 history: this.state.history.concat([{
                     from: 'system',
-                    message: 'connection closed'
+                    message: 'connection lost'
                 }]),
                 isConnected: false
             });
