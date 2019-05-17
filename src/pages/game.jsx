@@ -20,7 +20,8 @@ class Game extends Component {
             location: null,
             spy: null,
             duration: 0,
-            isAdmin: false
+            isAdmin: false,
+            gameState: 'waiting'
         };
     }
 
@@ -106,6 +107,7 @@ class Game extends Component {
                 case 'update': {
                     this.setState({
                         gameId: data.id,
+                        gameState: data.state,
                         clients: data.clients,
                         spy: data.spy,
                         location: data.location,
@@ -174,12 +176,17 @@ class Game extends Component {
             type: 'leave',
             lobbyid: this.state.gameId
         });
+        this.props.leave();
     };
     start = () => {
         this.request({
             type: 'start',
             lobbyid: this.state.gameId
         });
+    };
+    countdown = () => {
+        let time = this.state.timeLeft;
+        return Math.floor(time / 60) + ':' + (time%60 > 9 ? time%60 : "0" + (time%60));
     };
     render() {
 
@@ -199,33 +206,35 @@ class Game extends Component {
         return (
             <div>
 
-                Your WS connection state: {this.state.isConnected ? 'connected': 'disconnected'}<br/>
-                Your Game ID: {this.state.gameId} <br/>
-                Your permission: {this.state.isAdmin ? 'admin' : 'none'}<br />
-                Game status: <br />
-                Time left: {this.state.timeLeft} seconds<br />
-                Your Name: {this.state.name}<br/>
+                <div className={`${game.status} ${this.state.isConnected ? game.connected : game.disconnected}`} />
 
-                <h4>Clients in lobby</h4>
-                <ul>
+                <div style={{display: (this.state.gameState === 'started' ? 'flex' : 'none')}} className={game.countdown}>
+                    <span>{this.countdown()}</span>
+                </div>
+
+                <div className={game.share}>
+                    <input className={forms.input} type={'text'} readOnly={true} value={this.state.gameId} />
+                </div>
+
+                <h4 className={game.sectionTitle}>Clients in lobby</h4>
+                <div className={game.clients}>
                 {
                     this.state.clients.length > 0
                         ? this.state.clients.map(client => (
-                          <li key={client}>{client}</li>
+                          <div className={`${game.client}`} key={client}>{client}</div>
                         ))
-                        : <li>No clients in lobby</li>
+                        : <div>No clients in lobby</div>
                 }
-                </ul>
-
-
-                <h3>Possible Locations</h3>
-
-                <div className={game.locations}>
-                    {
-                        this.state.locations.map(location => <div className={game.location}>{location}</div>)
-                    }
                 </div>
 
+                <div style={{display: (this.state.gameState === 'started' ? 'block' : 'none')}}>
+                    <h4 className={game.sectionTitle}>Possible Locations</h4>
+                    <div className={game.locations}>
+                        {
+                            this.state.locations.map(location => <div className={game.location}>{location}</div>)
+                        }
+                    </div>
+                </div>
 
                 {this.state.isAdmin ? adminPanel : userPanel}
 
@@ -238,7 +247,8 @@ class Game extends Component {
 Game.propTypes = {
     type: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    config: PropTypes.object.isRequired
+    config: PropTypes.object.isRequired,
+    leave: PropTypes.func.isRequired
 };
 
 export default Game;

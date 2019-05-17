@@ -3,9 +3,116 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+
+  .location {
+    width: 30%;
+    padding: 5px;
+    border: 1px solid #0096ff;
+    color: #ffffff;
+    background-color: #0070c4;
+    font-family: 'Maiden Orange', cursive;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    margin: 1px 5px;
+    cursor: pointer;
+  }
 }
 
-.location {
-  width: 50%;
-  padding: 5px;
+.clients {
+  display: flex;
+  flex-flow: column;
+
+  .client {
+    width: 100%;
+    padding: 5px 15px;
+    color: #0070c4;
+    text-align: center;
+    border: 1px solid #0070c4;
+    border-radius: 5px;
+    font-family: 'Maiden Orange', cursive;
+    font-size: 1.4rem;
+    margin: 2px 0;
+
+    &.admin {
+      border-color: #da2f01;
+      color: #da2f01;
+    }
+  }
+}
+
+.sectionTitle {
+  font-size: 1.8rem;
+  margin: 2.5rem 0 1.25rem;
+  text-align: center;
+}
+
+.status {
+  width: 100%;
+  height: 50px;
+  margin: 10px auto;
+  position: relative;
+
+  &::before {
+    content: ' ';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    left: calc(50% - 7.5px);
+    border-radius: 50%;
+  }
+  &::after {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 20px;
+    font-size: 1.2rem;
+  }
+  &.connected {
+    &::before {
+      background: linear-gradient(#30d47f, #29b569);
+    }
+    &::after {
+      content: 'connected';
+      color: #30d47f;
+    }
+  }
+  &.disconnected {
+    &::before{
+      background: linear-gradient(#da2f01, #ac2501);
+    }
+    &::after {
+      content: 'disconnected';
+      color: #da2f01;
+    }
+  }
+}
+
+.countdown {
+  width: 5rem;
+  height: 5rem;
+  margin: 15px auto;
+  padding: 15px;
+  font-family: 'Maiden Orange', cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #111111;
+  border-radius: 50%;
+
+  > span {
+    font-size: 1.8rem;
+  }
+}
+
+.share {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  input {
+    background-color: transparent !important;
+    text-align: center;
+  }
 }

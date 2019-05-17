@@ -1,7 +1,7 @@
 .join {
   position: relative;
-  width: 350px;
-  height: 100vh;
+  width: 600px;
+  min-height: 100vh;
   margin: auto auto;
   display: flex;
   flex-flow: column;

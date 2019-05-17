@@ -70,7 +70,7 @@ class Home extends Component {
                 break;
             }
             case 3: {
-                view = <Game type={this.state.type} name={this.state.name} config={this.state.config} />;
+                view = <Game leave={this.back} type={this.state.type} name={this.state.name} config={this.state.config} />;
             }
         }
         return (
